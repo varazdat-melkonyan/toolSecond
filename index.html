@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/flashes.css">
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" id="loadingScreen">
+        <div id="loader">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <div class="left"></div>
+    <div class="leftOverlay"></div>
+    <div class="sign"><</div>
+    <div class="right"></div>
+    <div class="rightOverlay"></div>
+
+    <div class="outcome"></div>
+    <div class="outcomeOverlay"></div>
+    <img id="arrows" src="graphics/arrows.svg">
+
+    <div id="check" class="hoverable" onclick="check()">
+        <div class="circle"></div>
+        <div class="icon">
+            <svg width="14px" height="16px" viewBox="0 0 14 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>0776DC2A-7706-4AFB-99E7-A9970D4AEF61</title>
+                <g id="Word-Spinner" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="First-page" transform="translate(-1115.000000, -911.000000)" fill="#686ACF">
+                        <path d="M1123.23627,913.383945 L1130.06209,924.475903 C1130.35154,924.94626 1130.20489,925.562207 1129.73453,925.851658 C1129.57693,925.948648 1129.3955,926 1129.21044,926 L1115.5588,926 C1115.00651,926 1114.5588,925.552285 1114.5588,925 C1114.5588,924.81494 1114.61015,924.63351 1114.70714,924.475903 L1121.53296,913.383945 C1121.82241,912.913587 1122.43835,912.766933 1122.90871,913.056384 C1123.04203,913.138427 1123.15423,913.250624 1123.23627,913.383945 Z" id="play" transform="translate(1122.384615, 919.000000) rotate(-270.000000) translate(-1122.384615, -919.000000) "></path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="flash" id="red">
+		<div></div>
+		<div></div>
+	</div>
+	<div class="flash" id="green">
+		<div></div>
+		<div></div>
+	</div>
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/loader.js"></script>
+    <script src="scripts/parser.js"></script>
+    <script src="scripts/view.js"></script>
+    <script src="scripts/flow.js"></script>
+</body>
+
+</html>

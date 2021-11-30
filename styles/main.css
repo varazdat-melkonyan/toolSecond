@@ -1,0 +1,277 @@
+@font-face{
+    font-family: Fedra;
+    src: url('../fonts/FedraSansAltPro/FedraSansAltPro-Medium.otf');
+}
+
+@font-face{
+    font-family: FedraBook;
+    src: url('../fonts/FedraSansAltPro/FedraSansAltPro-Book.otf');
+}
+
+@font-face{
+    font-family: FedraDemi;
+    src: url('../fonts/FedraSansAltPro/FedraSansAltPro-Demi.otf');
+}
+
+@font-face{
+    font-family: FedraBold;
+    src: url('../fonts/FedraSansAltPro/FedraSansAltPro-Bold.otf');
+}
+
+body {
+    background: #F3F3F3;
+    width: 900px;
+    height: 550px;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.question p {
+    font-family: Fedra;
+    font-size: 20px;
+    color: #436980;
+    line-height: 29px;
+    width: 560px;
+    text-align: center;
+}
+
+.question {
+    position: absolute;
+    top: 223px;
+    left: 171px;
+    transition: 1s;
+}
+
+.checkmark {
+    width: 22px !important;
+    height: 16px !important;
+    top: 11px !important;
+    left: 8px !important;
+}
+
+#check {
+    transition: 1s;
+	background: #F3F3F3;
+	width: 37px;
+	height: 37px;
+	box-shadow: 2px -1px 2px 0 #FEFEFE, -1px 2px 2px 0 rgba(0,0,0,0.16);
+	border-radius: 100%;
+    cursor: pointer;
+
+	position: fixed;
+    top: 0;
+    margin-top: 450px;
+	left: 431px;
+}
+
+.icon {
+    position: absolute;
+    width: 17px;
+    height: 14px;
+    top: 12px;
+    left: 12px;
+}
+
+#check svg {
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+}
+.sign {
+    position: absolute;
+    left: 431px;
+    top: 250px;
+    font-size: 50px;
+}
+.word p {
+    white-space: initial;
+    text-align: center;
+    max-width: 170px;
+}
+
+.hoverable:hover svg {
+	opacity: 0.5;
+}
+
+.circle {
+    box-shadow: -1px 1px 1px 0 rgba(254,254,254,0.48);
+    height: 31.08px;
+    width: 31.08px;
+    border-radius: 100%;
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.outcome {
+    transition: 1s;
+    height: 451px;
+    width: 705px;
+    border-radius: 19px;
+    position: absolute;
+    left: 99px;
+    top: 48px;
+    padding: 17px;
+    display: none;
+    overflow: hidden;
+}
+
+.outcomeOverlay {
+    height: 451px;
+    width: 705px;
+    border-radius: 19px;
+    box-shadow: inset -2px -2px 5px 0 #FFFFFF, inset 2px 3px 3px 1px rgba(222,222,230,0.72);
+    position: absolute;
+    left: 99px;
+    top: 48px;
+    opacity: 1;
+    display: none;
+    pointer-events: none;
+}
+
+#arrows {
+    transition: 0.8s;
+    position: absolute;
+    left: 438.5px;
+    bottom: 12px;
+    height: 26.9px;
+    width: 24.9px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.left, .right, .leftOverlay, .rightOverlay {
+    transition: 1s;
+    height: 195px;
+    width: 310px;
+    border-radius: 19px;
+    top: 190px;
+    position: absolute;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.left, .leftOverlay {
+    left: 45px;
+    font-family: FedraBold;
+    font-size: 40px;
+
+    color: #5C7CA6;
+}
+
+.right, .rightOverlay {
+    left: 545px;
+    font-family: FedraDemi;
+    font-size: 25px;
+
+    color: #9AB7DB;
+}
+
+.leftOverlay, .rightOverlay {
+    box-shadow: inset -2px -2px 5px 0 #FFFFFF, inset 2px 3px 3px 1px rgba(222,222,230,0.72);
+    pointer-events: none;
+}
+
+.left div, .right div {
+    margin-left: 56px;
+    transition: 1s;
+    height: 88px;
+    width: 199px;
+    border-radius: 19px;
+    background-color: #F3F3F3;
+    box-shadow: 5px 5px 5px 0 rgba(222,222,230,0.5), -3px -3px 5px 0 #FEFEFE;
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+}
+
+.row:first-of-type {
+    margin: 0;
+}
+
+.bar {
+    height: 5px;
+    width: 187px;
+    border-radius: 19px;
+    box-shadow: inset -2px -2px 5px 0 #FFFFFF, inset 2px 3px 3px 1px rgba(222,222,230,0.72);
+    position: absolute;
+    top: 42.5px;
+}
+
+.textHolder {
+    position: absolute;
+    top: 5px;
+    left: 13.5px;
+    overflow: show;
+    width: 172px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valueHolder {
+    position: absolute;
+    top: 51px;
+    left: 13.5px;
+    overflow: show;
+    width: 172px;
+    height: 34px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    position: relative;
+    height: 88px;
+    width: 199px;
+    border-radius: 19px;
+    background-color: #F3F3F3;
+    box-shadow: 5px 5px 5px 0 rgba(222,222,230,0.5), -3px -3px 5px 0 #FEFEFE;
+    margin-right: 37px;
+    padding: 5px;
+}
+
+.textHolder p {
+    font-family: FedraBold;
+    font-size: 30px;
+    color: #5C7CA6;
+}
+
+.valueHolder p {
+    font-family: FedraDemi;
+    font-size: 16px;
+    color: #9AB7DB;
+    margin-top: 4px;
+}
+
+.item:last-of-type {
+    margin: 0;
+}
+
+.show {
+    margin-left: 780px !important;
+}
