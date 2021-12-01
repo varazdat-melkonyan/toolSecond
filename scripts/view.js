@@ -8,10 +8,8 @@ const view = {
         let topText     = type == 0 ? top.text      : top.value;
 
         if (keepValue && type == 1) {
-            if (dupValues.length < 3) {
-                $(parent).append(`<div class="current word"><p>${currentText}</p></div>`);
-                $(parent).append(`<div class="bottom word"><p>${bottomText}</p></div>`);
-            }
+            $(parent).append(`<div class="current word"><p>${currentText}</p></div>`);
+            $(parent).append(`<div class="bottom word"><p>${bottomText}</p></div>`);
         } else {
             $(parent).append(`<div class="top word"><p>${topText}</p></div>`);
             $(parent).append(`<div class="current word"><p>${currentText}</p></div>`);
@@ -102,7 +100,7 @@ const view = {
     shake: async () => {
         $(".sign").addClass("shake");
         await timeout(820);
-        $(".signs .current").removeClass("shake");
+        $(".sign").removeClass("shake");
     },
     end: async () => {
         await timeout(200);
@@ -142,7 +140,6 @@ const view = {
             await timeout(200);
         }
 
-        if (originalData.length > 12) $("#arrows").addClass("arrowsAnimation");
         $(".outcome").css("overflow", "auto");
     },
     createItem: async (parent, text, value) => {
