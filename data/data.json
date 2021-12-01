@@ -2,48 +2,33 @@
     "elements": [
         {
             "text": "1You can get recipes from the chef’s themselves.",
-            "value": "111wf2wafabbaefhaefbaethemselvesfa",
+            "value": "1wf2wafabbaefhaefbaethemselvesfa",
             "sign": "="
         },
         {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
+            "text": "2You can get recipes from the chef’s themselves.",
+            "value": "2wf2wafabbaefhaefbaethemselvesfa",
             "sign": ">"
         },
         {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
+            "text": "3You can get recipes from the chef’s themselves.",
+            "value": "3wf2wafabbaefhaefbaethemselvesfa",
             "sign": ">"
         },
         {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
+            "text": "4You can get recipes from the chef’s themselves.",
+            "value": "4wf2wafabbaefhaefbaethemselvesfa",
             "sign": "<"
         },
         {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
+            "text": "5You can get recipes from the chef’s themselves.",
+            "value": "5wf2wafabbaefhaefbaethemselvesfa",
             "sign": "="
         },
         {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
+            "text": "6You can get recipes from the chef’s themselves.",
+            "value": "6wf2wafabbaefhaefbaethemselvesfa",
             "sign": "="
-        },
-        {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
-            "sign": ">"
-        },
-        {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
-            "sign": "<"
-        },
-        {
-            "text": "You can get recipes from the chef’s themselves.",
-            "value": "wf2wafabbaefhaefbaethemselvesfa",
-            "sign": ">"
         }
     ]
 }
