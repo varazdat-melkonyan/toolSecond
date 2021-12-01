@@ -4,14 +4,16 @@ const timeout = (ms) => {
 
 let data;
 let dupValues = [];
+let datSign = [];
 let values = [];
 let keepValue = false;
 let currentWord = [0, 0];
-let scrolling = [false, false];
-let shuffledIndexes = [];
+let scrolling = false;
 let done = false;
 let originalData = [];
 let href = window.location.href;
+let index = 1;
+let signs = [];
 
 jQuery.event.special.wheel = {
     setup: function( _, ns, handle ) {
@@ -31,6 +33,7 @@ const onPageLoad = async () => {
             for(let i = 0; i < data.length - 1; i++) {
                 if (data[i + 1].value == data[i].value && !dupValues.includes(data[i].value)) {
                     dupValues.push(data[i].value);
+                    datSign.push(data[i].sign)
                 }
             }
         }
@@ -42,36 +45,34 @@ const onPageLoad = async () => {
         }
 
         originalData = JSON.parse(JSON.stringify(data));
-        values = shuffle(values);
-        data = shuffle(data);
+        // values = shuffle(values);
+        // data = shuffle(data);
 
         addWords(".left", currentWord[0], 0);
         addWords(".right", currentWord[1], 1);
+        $(".signs").append(`<div id="sign_0" class="topSign sign"><p><</p></div>`);
+        $(".signs").append(`<div id="sign_1" class="currentSign sign"><p>></p></div>`);
+        $(".signs").append(`<div id="sign_2" class="bottomSign sign"><p>=</p></div>`);
 
-        $(".left" ).on('wheel', async function (e) { wheel(e, this, 0) });
-        $(".right").on('wheel', async function (e) { wheel(e, this, 1) });
-
+        $(".signs" ).on('wheel', async function (e) { wheel(e, 0) });
         loader.toggle();
     })
 }
 
-const wheel = async (e, obj, i) => {
-    if (!scrolling[i] && !done) {
+const wheel = async (e, i) => {
+    if (!scrolling && !done) {
         let dir = Math.sign(e.originalEvent.wheelDelta);
+        let newIndex = index - dir;
 
-        let two = keepValue && i == 1 ? dupValues.length < 3 : data.length < 3;
-        if (two) {
-            if($(obj).find(".top").length == 0 && dir == -1) {
-                return;
-            } else if ($(obj).find(".bottom").length == 0 && dir == 1) {
-                return;
-            }
+        if (newIndex >= 0 && newIndex <= 2)
+        {
+            scrolling = true;
+            index -= dir;
+            await view.scrollToSign(dir);
+            setTimeout(() => {
+                scrolling = false;
+            }, 700);
         }
-
-        currentWord[i] += dir;
-        scrolling[i] = true;
-        await scrollToWord(currentWord[i], dir, obj, i, false, data.length >= 3);
-        scrolling[i] = false;
     }
 }
 
@@ -87,40 +88,32 @@ const addWords = async (parent, index, type) => {
     }
 }
 
-const shuffle = (array) => {
-	let currentIndex = array.length, tempVal, randomIndex;
+// const shuffle = (array) => {
+// 	let currentIndex = array.length, tempVal, randomIndex;
 
-	while (0 !== currentIndex)
-	{
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
+// 	while (0 !== currentIndex)
+// 	{
+// 		randomIndex = Math.floor(Math.random() * currentIndex);
+// 		currentIndex -= 1;
 
-		tempVal = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = tempVal;
-	}
+// 		tempVal = array[currentIndex];
+// 		array[currentIndex] = array[randomIndex];
+// 		array[randomIndex] = tempVal;
+// 	}
 
-	return array;
-}
+// 	return array;
+// }
 
 const scrollToWord = async (index, dir, parent, type, reset, generate) => {
-    if (keepValue && type == 1) {
-        if (dupValues.length < 3) {
-            await view.updatePair(getWord(index, type), getWord(index - 1, type), getWord(index + 1, type), dir, parent, type, reset, false);
-        } else {
-            await view.updatePair(getWord(index, type), getWord(index - 1, type), getWord(index + 1, type), dir, parent, type, reset, false);
-        }
-    } else {
-        await view.updatePair(getWord(index, type), getWord(index - 1, type), getWord(index + 1, type), dir, parent, type, reset, generate);
-    }
+    await view.updatePair(getWord(index, type), getWord(index - 1, type), getWord(index + 1, type), dir, parent, type, reset, generate);
 }
 
 const check = async () => {
     view.flashCircle();
-    scrolling = [true, true];
+    scrolling = true;
     $("#check").attr("onclick", "");
 
-    if (getWord(currentWord[0], 0).value == getWord(currentWord[1], 1).value) {
+    if (getWord(currentWord[0], 0).value == getWord(currentWord[1], 1).value && data[index].sign == getWord(currentWord[1], 1).sign) {
         view.toggleFlash("green");
 
         data.splice(data.indexOf(getWord(currentWord[0])), 1);
@@ -158,7 +151,7 @@ const check = async () => {
     if (keepValue) scrolling = [true, false];
     
     await timeout(900);
-    scrolling = [false, false];
+    scrolling = false;
     $("#check").attr("onclick", "check()");
 }
 

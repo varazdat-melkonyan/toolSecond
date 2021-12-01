@@ -6,7 +6,7 @@ const view = {
         let currentText = type == 0 ? current.text  : current.value;
         let bottomText  = type == 0 ? bottom.text   : bottom.value;
         let topText     = type == 0 ? top.text      : top.value;
-        
+
         if (keepValue && type == 1) {
             if (dupValues.length < 3) {
                 $(parent).append(`<div class="current word"><p>${currentText}</p></div>`);
@@ -17,8 +17,11 @@ const view = {
             $(parent).append(`<div class="current word"><p>${currentText}</p></div>`);
             $(parent).append(`<div class="bottom word"><p>${bottomText}</p></div>`);
         }
-
         view.fitText(".word", 20);
+    },
+    scrollToSign: async(direction) => {
+        let offset = direction > 0 ? "+=77" : "-=77";
+        $(".sign").css("top", offset);
     },
     updatePair: async (current, top, bottom, dir, parent, type, reset, generate) => {
         let currentText = type == 0 ? current.text  : current.value;
@@ -97,9 +100,9 @@ const view = {
         if (!keepValue) $(".right .current").addClass("goRight");
     },
     shake: async () => {
-        $(".current").addClass("shake");
+        $(".sign").addClass("shake");
         await timeout(820);
-        $(".current").removeClass("shake");
+        $(".signs .current").removeClass("shake");
     },
     end: async () => {
         await timeout(200);
@@ -107,7 +110,8 @@ const view = {
 
         for (let i = 0; i < classes.length; i++) {
             $(classes[i]).addClass("closed");
-            $(".sign").css("display", "none");
+            $(".signs").css("display", "none");
+            $(".signsOverlay").css("display", "none");
         }
 
         await timeout(1000);

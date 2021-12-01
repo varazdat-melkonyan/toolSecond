@@ -145,14 +145,43 @@ body {
     pointer-events: none;
 }
 
-.sign {
+.topSign {
     position: absolute;
-    left: 431px;
-    top: 250px;
-    font-size: 50px;
+    top: -77px;
 }
 
-.left, .right, .leftOverlay, .rightOverlay {
+.currentSign {
+    position: absolute;
+    top: 0;
+}
+
+.bottomSign {
+    position: absolute;
+    top: 77px;
+}
+
+.sign {
+    transition: 0.7s;
+}
+
+.signs, .signsOverlay {
+    height: 100px;
+    width: 110px;
+    transition: 1s;
+    position: absolute;
+    left: 400px;
+    top: 230px;
+    font-size: 70px;
+    border-radius: 19px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left, .right, .leftOverlay, .rightOverlay{
     transition: 1s;
     height: 195px;
     width: 310px;
@@ -179,7 +208,7 @@ body {
     color: #9AB7DB;
 }
 
-.leftOverlay, .rightOverlay {
+.leftOverlay, .rightOverlay, .signsOverlay {
     box-shadow: inset -2px -2px 5px 0 #FFFFFF, inset 2px 3px 3px 1px rgba(222,222,230,0.72);
     pointer-events: none;
 }
