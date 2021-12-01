@@ -1,0 +1,65 @@
+.flash {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    transition: 0.5s;
+    opacity: 0;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.flash div:first-child {
+    position: absolute;
+    top: 0;
+}
+
+.flash div:last-child {
+    position: absolute;
+    bottom: 0;
+}
+
+#green div:first-child {
+    height: 151px;
+    width: 900px;
+    opacity: 0.5;
+    transform: rotate(180deg);
+    background: linear-gradient(180deg, rgba(238,238,238,0) 0%, #13da59 100%);
+}
+
+#green div:last-child {
+    height: 151px;
+    width: 900px;
+    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(238,238,238,0) 0%, #13da59 100%);
+}
+
+#red div:first-child {
+    height: 151px;
+    width: 900px;
+    opacity: 0.5;
+    transform: rotate(180deg);
+    background: linear-gradient(180deg, rgba(238,238,238,0) 0%, #FF6C70 100%);
+}
+
+#red div:last-child {
+    height: 151px;
+    width: 900px;
+    opacity: 0.5;
+    background: linear-gradient(180deg, rgba(238,238,238,0) 0%, #FF6C70 100%);
+}
+
+.checkmark {
+    animation: appear 0.5s linear;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
