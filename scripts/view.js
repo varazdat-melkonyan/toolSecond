@@ -48,6 +48,11 @@ const view = {
         }
 
         view.fitText(".word", 20);
+
+        signShuff = shuffle(signShuff);
+        $("#sign_0 p").text(signShuff[2]);
+        $("#sign_1 p").text(signShuff[1]);
+        $("#sign_2 p").text(signShuff[0]);
         
         await timeout(200);
         $(parent).find(dir < 0 ? ".offscreenTop" : ".offscreenBottom").addClass(dir < 0 ? "top" : "bottom");
