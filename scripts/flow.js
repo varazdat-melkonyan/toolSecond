@@ -59,7 +59,7 @@ const wheel = async (e, i) => {
         {
             scrolling = true;
             index -= dir;
-            await view.scrollToSign(dir);
+            await view.scrollSign(dir);
             setTimeout(() => {
                 scrolling = false;
             }, 700);
