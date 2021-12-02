@@ -17,7 +17,7 @@ const view = {
         }
         view.fitText(".word", 20);
     },
-    scrollToSign: async(direction) => {
+    scrollSign: async(direction) => {
         let offset = direction > 0 ? "+=77" : "-=77";
         $(".sign").css("top", offset);
     },
@@ -131,11 +131,13 @@ const view = {
 
                 if (itemCount == originalData.length) {
                     view.fitText(".textHolder", 0, 0);
+                    view.fitText(".valueHolder", 0, 0);
                     break;
                 }
             }
 
             view.fitText(".textHolder", 0, 0);
+            view.fitText(".valueHolder", 0, 0);
 
             await timeout(200);
         }
