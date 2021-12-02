@@ -134,6 +134,7 @@ const check = async () => {
             } else if (data.length < 1) {
                 done = true;
                 view.end();
+                $("#check").css("display", "none");
                 break;
             }
         }
