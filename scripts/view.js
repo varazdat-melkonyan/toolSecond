@@ -74,10 +74,10 @@ const view = {
         $(".sign").css("opacity", "1");
         if (keepValue && parent == ".right") return;
         
-        $(parent + " .top").addClass   ("current");
+        $(parent + " .top").addClass("current");
         $(parent + " .top").removeClass("top");
-        $(parent + " .goLeft" ).remove ();
-        $(parent + " .goRight").remove ();
+        $(parent + " .goLeft" ).remove();
+        $(parent + " .goRight").remove();
         view.fitText(".word", 20);
     },
     lastScroll: async () => {
