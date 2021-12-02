@@ -82,7 +82,6 @@ const view = {
     },
     lastScroll: async () => {
         $(".sign").css("opacity", "1");
-
         $(".left div").addClass("current");
         $(".left div").removeClass("top bottom");
 
