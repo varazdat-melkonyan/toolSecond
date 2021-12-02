@@ -71,6 +71,7 @@ const view = {
         if (reset == true) $(".goLeft").remove(); $(".goRight").remove();
     },
     secondLastScroll: async (parent) => {
+        $(".sign").css("opacity", "1");
         if (keepValue && parent == ".right") return;
         
         $(parent + " .top").addClass   ("current");
@@ -80,6 +81,8 @@ const view = {
         view.fitText(".word", 20);
     },
     lastScroll: async () => {
+        $(".sign").css("opacity", "1");
+
         $(".left div").addClass("current");
         $(".left div").removeClass("top bottom");
 
