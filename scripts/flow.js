@@ -13,6 +13,7 @@ let originalData = [];
 let href = window.location.href;
 let index = 1;
 let currentWord = [];
+let signShuff = ["<", ">", "="];
 
 jQuery.event.special.wheel = {
     setup: function( _, ns, handle ) {
@@ -38,19 +39,37 @@ const onPageLoad = async () => {
     let rand = Math.floor(Math.random() * dupValues.length);
     currentWord.push(rand,rand);
 
+    signShuff = shuffle(signShuff);
+
     originalData = JSON.parse(JSON.stringify(data));
 
     addWords(".left", currentWord[0], 0);
     addWords(".right", currentWord[1], 1);
-    $(".signs").append(`<div id="sign_0" class="topSign sign"><p><</p></div>`);
-    $(".signs").append(`<div id="sign_1" class="currentSign sign"><p>></p></div>`);
-    $(".signs").append(`<div id="sign_2" class="bottomSign sign"><p>=</p></div>`);
+    $(".signs").append(`<div id="sign_0" class="topSign sign"><p>${signShuff[0]}</p></div>`);
+    $(".signs").append(`<div id="sign_1" class="currentSign sign"><p>${signShuff[1]}</p></div>`);
+    $(".signs").append(`<div id="sign_2" class="bottomSign sign"><p>${signShuff[2]}</p></div>`);
 
-    $(".signs" ).on('wheel', async function (e) { wheel(e, 0) });
+    $(".signs" ).on('wheel', async function (e) { wheel(e) });
     loader.toggle();
 }
 
-const wheel = async (e, i) => {
+const shuffle = (array) => {
+	let currentIndex = array.length, tempVal, randomIndex;
+
+	while (0 !== currentIndex)
+	{
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		tempVal = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = tempVal;
+	}
+
+	return array;
+}
+
+const wheel = async (e) => {
     if (!scrolling && !done) {
         let dir = Math.sign(e.originalEvent.wheelDelta);
         let newIndex = index - dir;
