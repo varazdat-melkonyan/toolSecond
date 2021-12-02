@@ -113,9 +113,7 @@ const check = async () => {
         data.splice(data.indexOf(getWord(currentWord[0])), 1);
         values.splice(values.indexOf(getWord(currentWord[1], 1)), 1);
         view.deletePair();
-        $("#sign_0 p").css("opacity", "0");
-        $("#sign_1 p").css("opacity", "0");
-        $("#sign_2 p").css("opacity", "0");
+        $(".sign").css("opacity", "0");
         await timeout(1000);
         for (let i = 0; i < currentWord.length; i++) {
             if (!keepValue || (keepValue && i == 0))
