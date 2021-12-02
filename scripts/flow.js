@@ -86,9 +86,8 @@ const check = async () => {
     view.flashCircle();
     scrolling = true;
     $("#check").attr("onclick", "");
-    console.log(datSign);
-    console.log(getWord(currentWord[0], 0).sign);
-    if (getWord(currentWord[0], 0).value == getWord(currentWord[1], 1).value) {
+    
+    if (getWord(currentWord[0], 0).value == getWord(currentWord[1], 1).value && getWord(currentWord[0], 0).sign == $(`#sign_${index}`).text()) {
         view.toggleFlash("green");
 
         data.splice(data.indexOf(getWord(currentWord[0])), 1);
