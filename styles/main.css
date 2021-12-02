@@ -89,8 +89,12 @@ body {
     max-width: 170px;
 }
 
-.hoverable:hover svg {
-	opacity: 0.5;
+#check:hover img{
+	opacity: 0.7;
+}
+
+#check:active img{
+    opacity: 0.5;
 }
 
 .circle {
