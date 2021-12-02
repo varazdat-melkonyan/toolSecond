@@ -114,6 +114,7 @@ const check = async () => {
         values.splice(values.indexOf(getWord(currentWord[1], 1)), 1);
         view.deletePair();
         $(".sign").css("opacity", "0");
+        
         await timeout(1000);
         for (let i = 0; i < currentWord.length; i++) {
             if (!keepValue || (keepValue && i == 0))
