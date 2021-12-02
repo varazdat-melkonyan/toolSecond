@@ -164,10 +164,25 @@ body {
     transition: 0.7s;
 }
 
-.signs, .signsOverlay {
+.signsOverlay {
     height: 100px;
-    width: 110px;
-    transition: 1s;
+    width: 100px;
+    position: absolute;
+    left: 400px;
+    top: 226px;
+    font-size: 70px;
+    border-radius: 19px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.signs {
+    height: 100px;
+    width: 100px;
     position: absolute;
     left: 400px;
     top: 230px;
