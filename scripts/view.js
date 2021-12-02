@@ -53,9 +53,7 @@ const view = {
         $("#sign_0 p").text(signShuff[2]);
         $("#sign_1 p").text(signShuff[1]);
         $("#sign_2 p").text(signShuff[0]);
-        $("#sign_0 p").css("opacity", "1");
-        $("#sign_1 p").css("opacity", "1");
-        $("#sign_2 p").css("opacity", "1");
+        $(".sign").css("opacity", "1");
         
         await timeout(200);
         $(parent).find(dir < 0 ? ".offscreenTop" : ".offscreenBottom").addClass(dir < 0 ? "top" : "bottom");
