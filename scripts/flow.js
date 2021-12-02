@@ -7,13 +7,12 @@ let dupValues = [];
 let datSign = [];
 let values = [];
 let keepValue = false;
-let currentWord = [0, 0];
 let scrolling = false;
 let done = false;
 let originalData = [];
 let href = window.location.href;
 let index = 1;
-// let signs = [$("#sign_0"), $("#sign_1"), $("#sign_2")];
+let currentWord = [];
 
 jQuery.event.special.wheel = {
     setup: function( _, ns, handle ) {
@@ -22,31 +21,33 @@ jQuery.event.special.wheel = {
 };
 
 const onPageLoad = async () => {
-    $.get('data/data.json', function (json) {
-        data = json.elements;
+    data = await $.get('data/data.json');
+    data = data.elements;
 
-        for(let i = 0; i < data.length - 1; i++) {
-                dupValues.push(data[i].value);
-                datSign.push(data[i].sign);
-        }
+    for(let i = 0; i < data.length - 1; i++) {
+            dupValues.push(data[i].value);
+            datSign.push(data[i].sign);
+    }
 
-        for (let i = 0; i < dupValues.length; i++) dupValues[i] = {value: dupValues[i]};
+    for (let i = 0; i < dupValues.length; i++) dupValues[i] = {value: dupValues[i]};
 
-        for (let i =  0; i < data.length; i++) {
-            values.push({value: data[i].value});
-        }
+    for (let i =  0; i < data.length; i++) {
+        values.push({value: data[i].value});
+    }
 
-        originalData = JSON.parse(JSON.stringify(data));
+    let rand = Math.floor(Math.random() * dupValues.length);
+    currentWord.push(rand,rand);
 
-        addWords(".left", currentWord[0], 0);
-        addWords(".right", currentWord[1], 1);
-        $(".signs").append(`<div id="sign_0" class="topSign sign"><p><</p></div>`);
-        $(".signs").append(`<div id="sign_1" class="currentSign sign"><p>></p></div>`);
-        $(".signs").append(`<div id="sign_2" class="bottomSign sign"><p>=</p></div>`);
+    originalData = JSON.parse(JSON.stringify(data));
 
-        $(".signs" ).on('wheel', async function (e) { wheel(e, 0) });
-        loader.toggle();
-    })
+    addWords(".left", currentWord[0], 0);
+    addWords(".right", currentWord[1], 1);
+    $(".signs").append(`<div id="sign_0" class="topSign sign"><p><</p></div>`);
+    $(".signs").append(`<div id="sign_1" class="currentSign sign"><p>></p></div>`);
+    $(".signs").append(`<div id="sign_2" class="bottomSign sign"><p>=</p></div>`);
+
+    $(".signs" ).on('wheel', async function (e) { wheel(e, 0) });
+    loader.toggle();
 }
 
 const wheel = async (e, i) => {
@@ -86,7 +87,7 @@ const check = async () => {
     view.flashCircle();
     scrolling = true;
     $("#check").attr("onclick", "");
-    
+
     if (getWord(currentWord[0], 0).value == getWord(currentWord[1], 1).value && getWord(currentWord[0], 0).sign == $(`#sign_${index}`).text()) {
         view.toggleFlash("green");
 
