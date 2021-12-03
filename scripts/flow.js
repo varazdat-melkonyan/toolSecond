@@ -138,7 +138,7 @@ const check = async () => {
                 break;
             }
         }
-    } 
+    }
     else {
         view.toggleFlash("red");
         await view.shake();
@@ -152,7 +152,7 @@ const check = async () => {
 const getWord = (newIndex, type) => {
     let length  = (type == 1 && keepValue) ? dupValues.length : data.length;
     if (type == 1 && !keepValue) length = values.length;
-    newIndex    %= length;
+    newIndex %= length;
     
     if (newIndex < 0) {
         newIndex = length + newIndex;
